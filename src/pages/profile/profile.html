@@ -1,0 +1,112 @@
+<!--
+  Generated template for the ProfilePage page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar color="b">
+
+    <ion-title>
+      Profile
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only large color="royal" (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+      <button ion-button icon-only color="dust" align="right" ion-button clear icon-only (click)="update()">
+      </button>
+    </ion-buttons>
+
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+
+    <!-- <ion-buttons  *ngIf="showbtn" end>
+        <button ion-button icon-only color="danger" (click)="clear()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+        <button ion-button icon-only color="secondary" (click)="savez()">
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+      </ion-buttons>
+  <angular-cropper #angularCropper [cropperOptions]="cropperOptions" [imageUrl]="mypic" *ngIf="mycropmagez" ></angular-cropper> -->
+  
+ 
+  
+ <br>
+  
+  <div class="flex" align="center">
+    <ion-avatar align="center">
+
+      <img id="images" [src]="profileimage" onerror="this.style.opacity='1'" class="Avatar"  imageViewer>
+      <!-- <label for="hide"><ion-icon class="add" color="b" ios="ios-add-circle" md="md-add-circle"></ion-icon></label> -->
+      <!-- <input type="file" id="hide"  (change)="upload($event)"/>
+       <input type="file" class="filechoose"  (change)="upload($event)"/> -->
+
+      <button class="add"   ion-button icon-only clear large color="b" (click)="uploadImage()">
+        <img style="width: 30px; height: 30px;" src="../../assets/icon/add mit.png">
+      </button>
+    </ion-avatar>
+  </div>
+
+  
+<br>
+<br>
+  <div id='nameinput' *ngIf="showinput">
+    <ion-list style="display: flex; position :relative; top: 23" padding-left  padding-bottom>
+      <ion-item >
+        <ion-input type="text" placeholder="Enter the name "  value="{{name}}" [(ngModel)]="updatename" (ionChange)="tabcheck()"></ion-input>
+      </ion-item>
+      <button ion-button color="b" clear (click)="save()">save</button>
+
+    </ion-list>
+  </div>
+<br>
+  <div class="text">
+    <span><h1 align="center" id="namehide"> {{name}}</h1>  
+     <button id="btnhide" ion-button color="b" icon-only clear large (click)="edit()">
+      <ion-icon id="pen" name="create"></ion-icon>
+    </button> </span>
+    <p align="center" class="ion-note">
+      {{email}}
+    </p>
+  </div>
+  <div class="create" align="right">
+
+  </div>
+  <div class="segment">
+
+    <ion-list  >
+      <ion-item>
+
+        <ion-segment [(ngModel)]="pet">
+          <ion-segment-button value="Favourites">
+            FAVOURITE
+          </ion-segment-button>
+         
+        </ion-segment>
+
+        <div [ngSwitch]="pet">
+          <div class="container">
+            <ion-list *ngSwitchCase="'Favourites'" color="dust">
+              <ion-item>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col col-6 *ngFor="let a of  favouriteArray" (press)="ShareDelete(a.image, a.k)">
+                      <img src="{{a.message}}" class="image" imageViewer>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+
+
+       
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,31 @@
+<!--
+  Generated template for the ModalmessagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-toolbar color="b" >
+    <ion-title>Saved message</ion-title>
+  </ion-toolbar >
+
+</ion-header>
+
+
+<ion-content padding class="background">
+  <div class="body">
+    <h2 text-center>Your message has been scheduled. <hr> When the set date comes it automatical sends the message on that day.<hr> To view the scheduled message(s) click on the schedule tab.</h2>
+    
+    <br>
+    <!-- <button class="buttons" ion-button color="b" full round (click)="poptoevent()" id="hidebtn">Ok</button> -->
+    
+    <div class="btn-box" no-padding >
+      <button   no-padding class="buttons" ion-button color="b3" full  (click)="viewScheduled()"  ion-button>View Scheduled Message</button>
+    <h2 text-center>OR</h2>
+      <button  no-padding class="buttons" ion-button color="dust" full  (click)="CreateScheduled()" ion-button>Schedule another message</button>
+    </div>
+     </div>
+</ion-content>
+
+

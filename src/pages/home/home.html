@@ -1,17 +1,51 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Home</ion-title>
-  </ion-navbar>
-</ion-header>
 
-<ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
-</ion-content>
+    <ion-navbar color="b" >
+        <!-- <ion-buttons end>
+            <button ion-button icon-only (click)="Personalcard()">
+              <ion-icon ios="ios-create" md="md-create"></ion-icon>
+            </button> 
+          </ion-buttons> -->
+      <ion-title align="center">
+          Home
+      </ion-title>
+     
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content  class="backgroud" padding >
+  <div class="card-container" *ngIf="ready" id="cards">
+    <sc-card  *ngFor="let attendant of attendants"
+[orientation]="cardDirection" [tinder-card]="cardOverlay"[callDestroy]="attendant.destroyEvent" [callLike]="attendant.likeEvent" (onLike)="onCardInteract($event)"  >
+
+
+<!-- {{textdisplay}}  -->
+
+<!-- <div class="user_img" [style.background-image]="imzx.asBg" > -->
+ 
+<!-- <img src="{{slidingImage}} "> -->
+<div *ngIf="hideimage">
+    <img src="{{imzx}}" (load)="onImageLoad($event)"  >
+
+</div>
+
+
+<!-- </div> -->
+    </sc-card>
+   
+</div>
+
+<h2  class="hasmess" padding>{{hasMessages}}</h2>
+      </ion-content>
+      <ion-footer *ngIf="noCards == 1"  id="hidebtnz">
+        <ion-fab  left bottom padding>
+          <button ion-fab  class="fabs" color="light" (click)="dislike()"><ion-icon color="danger" name="md-close"  ></ion-icon></button>
+        </ion-fab>
+        <ion-fab center bottom >
+          <button ion-fab mini color="light" (click)="shareVia()"><ion-icon color="primary" name="share"></ion-icon></button>
+        </ion-fab>
+        <ion-fab right bottom padding>
+          <button ion-fab class="fabs" color="light" (click)="like()"><ion-icon color="secondary" name="md-heart"  ></ion-icon></button>
+         </ion-fab>
+         </ion-footer>

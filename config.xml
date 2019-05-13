@@ -1,8 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.codestars.mit" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>MIT</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
+    <description>We all have friends (well, most of us), and they have special occasions. It's too hard to remember everyone's special days — there are 365 days in a year! And, cluttering up your fridge calendar with all your friends' and family's birthdays, graduations, anniversary days, wedding days,  leaves no room for stuff that actually matters.
+MOMENTS IN TIME lets you sync your contacts or you can add them manually. You will be able to add the special occasions of your choice, you will have to add details and include a date and time on when to send a message. When the set date comes you receive a notification to send the message in the platform of your choice it’s either you send via WhatsApp, SMS or e-mail. So you can try to be the first person to wish your special people a HAPPY BIRTHDAY, ANNIVERSARY, GRADUTION MESSAGES, New jobs.
+.</description>
+     <author email="codetribestar@gmail.com">Codestars Team</author>
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
@@ -82,4 +84,10 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^4.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.4" />
+    <plugin name="cordova-plugin-network-information" spec="^2.0.1" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
+    <plugin name="cordova-sqlite-storage" spec="^3.2.0" />
+    <plugin name="cordova-plugin-file" spec="^6.0.1" />
+    <plugin name="cordova-plugin-contacts" spec="^3.0.1" />
 </widget>

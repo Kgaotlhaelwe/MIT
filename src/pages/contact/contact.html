@@ -1,17 +1,42 @@
+
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar color="b" text-center>
+    <!-- <div class="imgavatar" >
+      
+    </div> -->
+    <img  src="{{imagez}}">
+    
+    <ion-title >Contacts</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="choosecontact()">
+        <ion-icon name="person-add"></ion-icon>
+      </button>
+
+    </ion-buttons>
+  </ion-toolbar>
+
+  
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+<ion-content text-center class="background">
+
+
+  <div *ngIf="contactListArray.length == 0; else conempty">
+    <h1>You don't have any contacts available click on the add button to add a contact </h1>
+  </div>
+
+  <ng-template #conempty>
+
+
+    <ion-list no-lines  >
+     
+        <ion-item  class="list"  *ngFor="let details of contactListArray; let u = index" (click)="itemSelected(details.name,details.email, details.ocassion)"   (press)="Delete(details.key , u)">
+          <ion-avatar class="avatar"  item-start >
+            <h4 text-center class="letterinside">{{details.shortname}}</h4>
+          </ion-avatar>
+          <h2><b> {{details.name}}</b></h2>
+          <h3>{{details.email }}</h3>
+        </ion-item>  
+        </ion-list>
+  </ng-template>
 </ion-content>

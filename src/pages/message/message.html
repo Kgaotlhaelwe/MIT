@@ -1,0 +1,60 @@
+
+
+
+ 
+
+<ion-content class="background"  >
+
+  
+
+<div class="topdiv" >
+
+ 
+<div class="half" ></div>
+
+
+<div class="center" [hidden]="keyboard.isOpen()" >
+<div>
+<h1 text-center padding>Wish {{showName}} on their {{userCategory}} </h1>
+</div>
+<img class="img" [hidden]="keyboard.isOpen()"  src="{{imagez}}" >
+
+<br>
+<div class="flex" > 
+  <h1 text-center padding > <b>It's the little things that matter</b> </h1> <br> <br> 
+</div>
+</div> 
+</div>
+
+  
+</ion-content>
+<ion-footer >
+  <div class="date-box" >
+     
+        <ion-item color="dust" class="space" *ngIf="hideDate" no-lines >
+ <ion-label color="light" > &nbsp; <b>Date</b> </ion-label>
+
+ <ion-datetime displayFormat="MMM/DD/YYYY" min="2019" max="2050" [(ngModel)]="myDate" placeholder="{{userDate}}" (ionChange)="dateChange()"></ion-datetime>
+</ion-item>
+
+<ion-item color="dust" class="space" *ngIf="showDate" no-lines>
+ <ion-label color="light" > &nbsp; <b>Date</b></ion-label>
+
+ <ion-datetime displayFormat="MMM/DD"  #dateformat pickerFormat="MMMM DD"  [(ngModel)]="mybirthDate"    (ionChange)="dateChanged(dateformat.value)"  placeholder="{{userDate}}"></ion-datetime>
+</ion-item>
+</div>
+
+  <br>
+ <ion-item class="textboxmove"  no-lines>
+    <ion-textarea no-lines class="textbox" placeholder="Enter a message" max="15" [(ngModel)]="textboxmessage"  value="{{textboxmessage}}"></ion-textarea>
+  </ion-item>
+  <br>
+      <div class="buttons"  >
+          <button color="b3" ion-button id="button2" (click)="autoMsg()">Predef msgs</button>
+        <button color="dust" ion-button id="button1" (click)="send()"  *ngIf="showSendBtn">SCHEDULE</button>
+        <button color="dust" ion-button id="button1" (click)="update()" *ngIf="showUpdateBtn">update</button>
+      </div>
+
+  </ion-footer>
+
+  

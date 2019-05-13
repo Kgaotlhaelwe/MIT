@@ -13,7 +13,11 @@ $app-direction: ltr;
 
 
 @import "ionic.globals";
-
+@import "ionic.globals";
+@import "theme.maincolor";
+@import "theme.orange";
+@import "theme.blue";
+@import "theme.purple";
 
 // Shared Variables
 // --------------------------------------------------
@@ -34,11 +38,28 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
+  primary:    #1e6ef7,
   secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  transparet:transparent,
+  danger:     #ff0000,
+  light:      #ffffff,
+  dark:       #222,
+  blue: #008AFF,
+  b: #F9B2B8,
+  blu:#008AFF,
+  grey:rgb(206, 206, 206),
+  dust:#9D2B4C,
+  blur:#69285A,
+  toast1:rgba(0, 255, 26, 0.815) ,
+  toast4:rgba(236, 187, 95, 0.815) ,
+  toast2:rgba(185, 29, 29, 0.548),
+  b1:#9CDCFF,
+  b2:#FBD17F,
+  b3:rgb(25, 140, 160),
+  blight:(
+    base:#f4f4f4,
+    contrast: #F9B2B8,
+  )
 );
 
 

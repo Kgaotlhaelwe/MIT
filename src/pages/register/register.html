@@ -1,0 +1,50 @@
+<ion-content padding class="background" >
+
+  <div class="main" > 
+    <!-- app logo -->
+      <div class="logo" >
+          <h1>MIT</h1>
+          <p>Moment in Time</p>
+        </div>
+         <!-- end of app logo -->
+
+        <!-- start inputs section -->
+        <div class="inputs">
+            <ion-item class="ion-item"  >
+              <ion-label ><ion-icon  style="font-size: 1em"  color="light" ios="ios-contact" md="md-contact"></ion-icon></ion-label>
+              <ion-input placeholder=" Username"  type="userame" value="" name="userame"ngModel #userame="ngModel" required="true"[(ngModel)]="user.name" (ionChange)="getUserName(userame.value)"></ion-input>
+            </ion-item>
+            <p padding-top padding-left  style='font-family: Arial, Helvetica, sans-serif; font-size: 15px;color: red' *ngIf="!userame.valid && userame.touched" class="err dis">Username Cannot Be Empty!</p>
+
+            <ion-item  class="ion-item">
+              <ion-label ><ion-icon  style="font-size: 0.9em" color="light" ios="ios-mail" md="md-mail"></ion-icon></ion-label>
+              <ion-input placeholder="Email" type="email" value=""  name="email"ngModel #email="ngModel" required="true" [(ngModel)]="user.email" (ionChange)="getEmail(email.value)"></ion-input>
+            </ion-item>
+            <p padding-top padding-left  style='font-family: Arial, Helvetica, sans-serif; font-size: 15px;color: red' *ngIf="!email.valid && email.touched" class="err dis">Email Cannot Be Empty!</p>
+
+            <ion-item  class="ion-item" >
+              <ion-label>  <ion-icon color="light" ios="ios-lock" md="md-lock"></ion-icon> </ion-label>
+              <ion-input placeholder="Password" type="password"  name="password"ngModel #password="ngModel" required="true" [(ngModel)]="user.password" (ionChange)="getPassword(password.value)"></ion-input>
+            </ion-item>
+            <p padding-top padding-left style='font-family: Arial, Helvetica, sans-serif; font-size: 15px;color: red' *ngIf="!password.valid && password.touched" class="err dis">Password Cannot Be Empty!</p>
+          <br>
+            <br>
+          <div class="button" >
+          <div ></div>
+            <button  ion-button round block  color="light"  id="btRegister"   (click)="Register(email.value ,password.value ,userame.value)">Register</button>
+            
+            
+            
+        
+            <br>
+      
+            <button block ion-button round class="Login" color="light"  id="btSubmit" outline (click)="LoginPage()"> &nbsp; Sign in</button>
+          </div>
+             </div>
+               <!-- close inputs section  -->
+            
+          </div>
+          <!-- close main section -->
+
+</ion-content>
+

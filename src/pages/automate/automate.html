@@ -1,0 +1,36 @@
+<!--
+  Generated template for the AutomatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-header>
+    <ion-toolbar color="b"   >
+        <!-- <ion-buttons left>
+           <button ion-button icon-only color="light" (click)="back()">
+             <ion-icon name="arrow-round-back"></ion-icon>
+           </button> 
+          </ion-buttons>    -->
+         <ion-title>Automated messages</ion-title>
+   </ion-toolbar>
+</ion-header>
+
+<ion-content padding  class="background">
+
+     <ion-card *ngFor="let a of tempArray; let u = index"  class="main2" (click)="autoMessagessssss(a.message)">
+
+      
+
+       
+        <ion-card-content  > 
+          
+   
+            <h2> {{ a.message }}  </h2>
+         
+          
+   
+       </ion-card-content>
+      </ion-card>
+      

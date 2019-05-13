@@ -1,0 +1,103 @@
+page-add-contacts {
+    .back{
+        // position: absolute;
+        // top: 0%;
+        // bottom: 0;
+        // left: 0;
+        // right: 0;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+         background-image:linear-gradient(rgba(188, 46, 86, 0.08),rgba(240, 210, 210, 0.525)),url('../../assets/9512d7cc3af9d3c25abee36754e5d01a.jpg');
+        //background-image:linear-gradient(rgba(189, 146, 146, 0.082),#f0d2d286),url('../../assets/9ea74a0cd9946a282100bbbeae94d6be.jpg');
+        // background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        //object-fit: cover;
+        // background-image: url('../../assets/imgs/laptop.jpg')
+        }
+        .mainconent{
+            display: flex;
+            flex-direction: column;
+            //justify-content: center;
+            //align-items: center;
+            // position: absolute;
+            // top: 0%;
+            // bottom: 0;
+            // left: 0;
+            // right: 0;
+            //width: 100%;
+            padding-top: 30%;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+  
+        h3{
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           width: 100%; 
+           color: white;
+           font-size: 2.5em;
+           margin-bottom: 5%;
+           text-align: center;
+           top: -4%;
+           position: relative;
+           font-weight: bold;
+        }
+        h2{
+            color: white;
+            font-weight: 100;
+        }
+        .TheItem{
+            border: solid 0px;
+            // background-color: rgb(255, 255, 255);
+            // margin-bottom: 2%;
+            // border-top: 0px solid;
+            // border-bottom: 0px solid white;
+            border-radius: 50px;
+            padding-left: 15px;
+            margin-top: 30px;
+        
+        }
+
+        .Thebutton{
+            // width: 50%;
+            background-color: rgba(91, 63, 217, 0);
+            border: 2px solid white;
+            border-radius: 100px;
+            position: relative;
+            margin-top: 30px;
+            bottom: 2%;
+        }
+        .text-input::-moz-placeholder {
+        
+           }
+       
+           .text-input:-ms-input-placeholder {
+       
+           }
+       
+           .text-input::-webkit-input-placeholder {
+          
+       
+       
+           }
+           .label-md {
+            margin: 13px 8px 13px 0;
+         
+        }
+        p{
+            color: white;
+            padding-left: 30%;
+            position: relative;
+            bottom: 5%;
+        }
+        h4{
+            color: white;
+            font-weight: 100;
+            font-size: 1.2em;
+        }
+}

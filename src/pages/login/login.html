@@ -1,0 +1,43 @@
+<ion-content text-center class="background">
+  <div padding class="body" ion-fixed>
+
+    <div class="logo-sec">
+      <h1>MIT</h1>
+      <p>Moment in Time</p>
+    </div>
+
+  
+      <div class="inputs">
+
+        <form >
+          <ion-item class="items">
+            <ion-label>
+              <ion-icon style="font-size: 0.922222em" color="light"name="mail"></ion-icon></ion-label>
+            <ion-input type="email" name="email" placeholder="Email" ngModel #email="ngModel" required="true" id="email" (ionChange)="getEmail(email.value)"  ></ion-input>
+          </ion-item>
+  
+          <p padding-top style='font-family: Arial, Helvetica, sans-serif; font-size: 15px;color: red' *ngIf="!email.valid && email.touched" class="err dis">Email Cannot Be Empty!</p>
+  
+          <ion-item class="items">
+            <ion-label>
+              <ion-icon color="light" ios="ios-lock" md="md-lock"></ion-icon> </ion-label>
+            <ion-input type="password" name="passoword" placeholder="Password" ngModel #password="ngModel" required="true" id="pass" (ionChange)="getPassword(password.value)"></ion-input>
+          </ion-item>
+  
+          <p padding-top style='font-family: Arial, Helvetica, sans-serif; font-size: 15px; color:red' *ngIf="!password.valid && password.touched" class="err dis">Password Cannot Be Empty!</p>
+        </form>
+        <div >
+          <button block ion-button round class="Login"  id="btSubmit"   outline color="light" (click)=" Login(email.value , password.value)"    >Login</button>
+       
+        </div>
+
+      </div>
+   
+  </div>
+</ion-content>
+<ion-footer [hidden]="keyboard.isOpen()">
+  <div class="register">
+    <button ion-button clear color="light" class="reg" (click)="register()">Don't have account?</button>
+    <button ion-button clear color="light" class="Forget" (click)="forgetPassword(user)">Forgot Password</button>
+  </div>
+</ion-footer>

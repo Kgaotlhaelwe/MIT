@@ -20,12 +20,26 @@
     "@angular/http": "5.2.11",
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
+    "@ionic-native/camera": "^4.20.0",
+    "@ionic-native/contacts": "^4.20.0",
     "@ionic-native/core": "~4.20.0",
+    "@ionic-native/file": "^5.5.1",
+    "@ionic-native/network": "^4.20.0",
+    "@ionic-native/social-sharing": "^4.20.0",
     "@ionic-native/splash-screen": "~4.20.0",
+    "@ionic-native/sqlite": "^4.20.0",
     "@ionic-native/status-bar": "~4.20.0",
-    "@ionic/storage": "2.2.0",
+    "@ionic/storage": "^2.2.0",
+    "cordova-plugin-camera": "^4.0.3",
+    "cordova-plugin-contacts": "^3.0.1",
+    "cordova-plugin-file": "^6.0.1",
+    "cordova-plugin-network-information": "^2.0.1",
+    "cordova-plugin-x-socialsharing": "^5.4.4",
+    "cordova-sqlite-storage": "^3.2.0",
     "ionic-angular": "3.9.5",
+    "ionic-image-loader": "^6.3.3",
     "ionicons": "3.0.0",
+    "ng2-swipe-cards": "^1.1.1",
     "rxjs": "5.5.11",
     "sw-toolbox": "3.6.0",
     "zone.js": "0.8.29"
@@ -34,5 +48,15 @@
     "@ionic/app-scripts": "3.2.2",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-x-socialsharing": {},
+      "cordova-plugin-network-information": {},
+      "cordova-plugin-camera": {},
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-file": {},
+      "cordova-plugin-contacts": {}
+    }
+  }
 }

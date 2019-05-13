@@ -1,11 +1,36 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      About
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-
-</ion-content>
+    <ion-navbar color="b" >
+      <ion-buttons left>
+        <button ion-button  color="royal">
+          <ion-icon name=""></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title text-center>
+        Scheduled messages
+      </ion-title>
+      <!-- <ion-buttons end>
+        <button ion-button icon-only  color="royal" (click)="presentModal()">
+          <ion-icon name="ios-information-circle"></ion-icon>
+        </button>
+      </ion-buttons> -->
+    </ion-navbar>
+  </ion-header>
+  <img src="../../assets/imgs/BIRTHDAY.png">
+  <ion-content class="background" >
+   
+    <h1 *ngIf="!hasMessages">You currently don't have messages to review</h1>
+      <ion-list    >
+       
+            <ion-item class="list" *ngFor="let v of sentMessages; let u = index" (click)="readMore(v.message , v.name)" (press)="Delete(v.k ,v.uniquedate)">
+              <ion-avatar class="avatar" item-start  >
+                <img  src="{{v.image}}">
+              </ion-avatar >
+              <h2 class="h2" ><b>{{v.name}}</b></h2>
+              <p> {{v.message}}
+              {{v.automessage}}
+            </p>
+            </ion-item>
+        
+        </ion-list>
+    
+  </ion-content>
