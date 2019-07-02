@@ -29,13 +29,14 @@ import { Network } from '@ionic-native/network';
 import { HttpClientModule } from '@angular/common/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts';
+import { CardPage} from "../pages/card/card"
 //SplashPage
 @NgModule({
   declarations: [
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,PopoverPage ,
+    HomePage,PopoverPage ,CardPage ,
     TabsPage  ,PersonalisedcardPage,LoginPage,RegisterPage , ProfilePage , EventPage, MessagePage, AddContactsPage, ViewPage, InfosentPage , SplashPage, ModalmessagePage, AutomatePage
   ],
   imports: [
@@ -49,7 +50,7 @@ import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/cont
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage , PopoverPage , PersonalisedcardPage , LoginPage ,RegisterPage, ProfilePage, EventPage, MessagePage, AddContactsPage, ViewPage, InfosentPage, SplashPage , ModalmessagePage, AutomatePage
+    TabsPage , PopoverPage , PersonalisedcardPage , LoginPage ,RegisterPage, ProfilePage, EventPage, MessagePage, AddContactsPage, ViewPage, InfosentPage, SplashPage , ModalmessagePage, AutomatePage , CardPage
   ],
   providers: [
     StatusBar,

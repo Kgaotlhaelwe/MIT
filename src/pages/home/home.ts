@@ -29,6 +29,8 @@ import { Platform } from 'ionic-angular';
 //import { IonicImageLoader } from 'ionic-image-loader';
 //import { ImgLoader } from 'ionic-image-loader';
 
+import {CardPage} from "../card/card" ;
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -76,21 +78,52 @@ export class HomePage {
   imzxx;
 
   hideimage;
+  hidebtnCard :boolean =false;
+
+  day = new Date();
+  datetoSting = this.day.toString();
+  res = this.datetoSting.substring(0, 3);
+  str = this.res;
+  imagetemArray = [];
+  imz;
   constructor(public navCtrl: NavController, private db: DatabaseProvider, private socialSharing: SocialSharing, public actionSheetCtrl: ActionSheetController, public popoverCtrl: PopoverController, private sanitizer: DomSanitizer, public toastCtrl: ToastController, private network: Network, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public platform: Platform) {
+
+    console.log(this.res)
     this.hideimage = true;
-    this.db.getMessages().then((data: any) => {
+    this.db.getImages().then((data: any) => {
       console.log(data);
-      this.images = data
+      this.imagetemArray = data;
+      // this.images =data
+      console.log(this.imagetemArray)
+
+      for (let index = 0; index < this.imagetemArray.length; index++) {
+        console.log(this.str);
+        console.log(this.imagetemArray[index].day)
+
+        if (this.str == this.imagetemArray[index].day) {
+          console.log("in the loop image")
+          console.log(this.imagetemArray[index])
+          this.images.push(this.imagetemArray[index])
+
+        } else {
+          console.log("not in loop image");
+          console.log(this.str);
+
+        }
+
+      }
 
 
 
+
+      console.log(this.images);
 
       this.imzx = this.images[this.liked].message
 
 
       console.log(this.imzx);
 
-      for (let i = 0; i < this.images.length - 2; i++) {
+      for (let i = 0; i < this.images.length; i++) {
 
         this.attendants.push({
           id: i + 1,
@@ -115,10 +148,7 @@ export class HomePage {
 
     })
 
-    platform.registerBackButtonAction(() => {
-      console.log("backPressed 1");
-      this.navCtrl.pop();
-    }, 1);
+
 
 
   }
@@ -127,24 +157,13 @@ export class HomePage {
 
 
 
-  // clearCache(refresher) {
-  //   this.imageLoader.clearCache();
-  //   refresher.complete();
-  // }
-
-  onImageLoad(event) {
-    //console.log('image ready: ', event);
-  }
 
 
-  presentLoading() {
-
-  }
 
 
-  sum(x, y, z) {
-    //return x + y + z;
-  }
+
+
+
   displayNetworkUpdate(connectionState: string) {
     let networkType = this.network.type
     this.toastCtrl.create({
@@ -158,10 +177,6 @@ export class HomePage {
 
   ionViewDidEnter() {
 
-    this.platform.registerBackButtonAction(function () {
-      this.navCtrl.pop()
-
-    });
 
     this.network.onConnect().subscribe(data => {
       console.log(data)
@@ -180,120 +195,115 @@ export class HomePage {
 
   }
   onCardInteract(event) {
-
-
-    if (event.like == false) {
-      console.log(event.like);
-      this.liked = this.liked + 1
-      this.textdisplay = this.cardOverlay.dislike.indicator
-      const toast = this.toastCtrl.create({
-        message: this.textdisplay,
-        cssClass: 'toast4',
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-      console.log(this.textdisplay);
-      if (this.liked == this.images.length - 2) {
-
-        this.hasMessages = "Oops! you ran out of cards ";
-        document.getElementById("hidebtnz").style.display = "none";
-
-      }
-      this.imzx = this.images[this.liked].message
-    }
-    ////////////////////////////////////////////////////////////////////////////
-
-
-    var track;
-
-    if (event.like == true) {
-
-      ////////////////////////////////////////////
-
-      if (this.likedPic.length == 0) {
-
-        this.db.likedMessage(this.imzx).then(() => { })
-        this.textdisplay = this.cardOverlay.like.indicator
+    if (this.images.length != this.liked) {
+      if (event.like == false) {
+        console.log(event.like);
+        this.liked = this.liked + 1
+        this.textdisplay = this.cardOverlay.dislike.indicator
         const toast = this.toastCtrl.create({
           message: this.textdisplay,
-          cssClass: 'toast',
-          duration: 2000,
+          cssClass: 'toast4',
+          duration: 3000,
           position: 'top'
         });
         toast.present();
-
-
-      } else if (this.likedPic.length >= 1) {
-
-
-        for (let index = 0; index < this.likedPic.length; index++) {
-
-          if (this.likedPic[index].message == this.imzx) {
-            track = 1
-
-
-
-
-            break;
-
-          } else {
-            track = 0
-
-          }
-
-
-        }
-
-
-        if (track == 0) {
-          this.db.likedMessage(this.imzx).then(() => { })
-          this.textdisplay = this.cardOverlay.like.indicator
-          const toast = this.toastCtrl.create({
-            message: this.textdisplay,
-            cssClass: 'toast',
-            duration: 2000,
-            position: 'top'
-          });
-          toast.present();
-
-        } else {
-
-          const toast = this.toastCtrl.create({
-            message: "You already liked it ",
-            cssClass: 'toast6',
-            duration: 1000,
-            position: 'top'
-          });
-          toast.present();
-
-
-        }
-
-
-
-        if (this.liked - 1 == this.images.length - 4) {
-          this.noCards = 0
+        console.log(this.textdisplay);
+        if (this.liked == this.images.length) {
 
           this.hasMessages = "Oops! you ran out of cards ";
           document.getElementById("hidebtnz").style.display = "none";
+          this.hidebtnCard = true
 
+
+        } else {
+          this.imzx = this.images[this.liked].message
         }
 
-        this.liked = this.liked + 1
-        this.imzx = this.images[this.liked].message
-
-        console.log(this.liked);
-        console.log(this.images.length);
-
- }
+      }
 
 
- }
+      //////////////////////////////////////////////////
+
+      var track;
+
+      if (event.like == true) {
+        if (this.likedPic.length == 0) {
+          console.log(this.likedPic)
+          this.db.likedMessage(this.imzx).then(() => {
+            this.textdisplay = this.cardOverlay.like.indicator
+            this.liked = this.liked + 1
+            const toast = this.toastCtrl.create({
+              message: this.textdisplay,
+              cssClass: 'toast',
+              duration: 2000,
+              position: 'top'
+            });
+            toast.present();
+          }).catch((error) => {
+
+          })
+
+        } else {
+
+          for (let index = 0; index < this.likedPic.length; index++) {
+            if (this.likedPic[index].message == this.imzx) {
+              track = 1
+              break;
+            } else {
+              track = 0
+            }
+          }
+
+          if (track == 0) {
+            this.db.likedMessage(this.imzx).then(() => {
+              this.liked = this.liked + 1
+              this.textdisplay = this.cardOverlay.like.indicator
+              const toast = this.toastCtrl.create({
+                message: this.textdisplay,
+                cssClass: 'toast',
+                duration: 2000,
+                position: 'top'
+              });
+              toast.present();
+            })
+          } else {
+            this.liked = this.liked + 1
+            const toast = this.toastCtrl.create({
+              message: "You already liked it ",
+              cssClass: 'toast6',
+              duration: 1000,
+              position: 'top'
+            });
+            toast.present();
+          }
+
+          if (this.liked == this.images.length) {
+            this.hasMessages = "Oops! you ran out of cards ";
+            document.getElementById("hidebtnz").style.display = "none";
+            this.hidebtnCard = true
+
+          } else {
+            this.imzx = this.images[this.liked].message
+          }
+          console.log(this.liked);
+          console.log(this.images.length);
+        }
+      }
+
+    } else {
+      console.log(" hide image ")
+      this.hasMessages = "Oops! you ran out of cards ";
+      document.getElementById("hidebtnz").style.display = "none";
+    }
+
+
+    ////////////////////////////////////////////////////////////////////////////
 
 
 
-}
+
+
+  }
 
 
 
@@ -322,49 +332,14 @@ export class HomePage {
 
 
   like() {
+    var track ;
 
-
-
-    var track;
-
+    console.log("clicked like button")
     if (this.likedPic.length == 0) {
-
-      this.db.likedMessage(this.imzx).then(() => { })
-      this.textdisplay = this.cardOverlay.like.indicator
-      const toast = this.toastCtrl.create({
-        message: this.textdisplay,
-        cssClass: 'toast',
-        duration: 2000,
-        position: 'top'
-      });
-      toast.present();
-
-
-    } else if (this.likedPic.length >= 1) {
-
-
-      for (let index = 0; index < this.likedPic.length; index++) {
-
-        if (this.likedPic[index].message == this.imzx) {
-          track = 1
-
-
-
-
-          break;
-
-        } else {
-          track = 0
-
-        }
-
-
-      }
-
-
-      if (track == 0) {
-        this.db.likedMessage(this.imzx).then(() => { })
+      console.log(this.likedPic)
+      this.db.likedMessage(this.imzx).then(() => {
         this.textdisplay = this.cardOverlay.like.indicator
+        this.liked = this.liked + 1
         const toast = this.toastCtrl.create({
           message: this.textdisplay,
           cssClass: 'toast',
@@ -372,9 +347,35 @@ export class HomePage {
           position: 'top'
         });
         toast.present();
+      }).catch((error) => {
 
+      })
+
+    } else {
+
+      for (let index = 0; index < this.likedPic.length; index++) {
+        if (this.likedPic[index].message == this.imzx) {
+          track = 1
+          break;
+        } else {
+          track = 0
+        }
+      }
+
+      if (track == 0) {
+        this.db.likedMessage(this.imzx).then(() => {
+          this.liked = this.liked + 1
+          this.textdisplay = this.cardOverlay.like.indicator
+          const toast = this.toastCtrl.create({
+            message: this.textdisplay,
+            cssClass: 'toast',
+            duration: 2000,
+            position: 'top'
+          });
+          toast.present();
+        })
       } else {
-
+        this.liked = this.liked + 1
         const toast = this.toastCtrl.create({
           message: "You already liked it ",
           cssClass: 'toast6',
@@ -382,26 +383,23 @@ export class HomePage {
           position: 'top'
         });
         toast.present();
-
-
       }
 
+      if (this.liked == this.images.length) {
 
-
-      if (this.liked == this.images.length - 2) {
-
-        document.getElementById("cards").style.display = "none";
+        
+     console.log("hide iamge and buttons")
         this.hasMessages = "Oops! you ran out of cards ";
+        document.getElementById("cards").style.display = "none";
         document.getElementById("hidebtnz").style.display = "none";
+        this.hidebtnCard = true
 
-      } else { }
-
-      this.liked = this.liked + 1
-      this.imzx = this.images[this.liked].message
-
-
+      } else {
+        this.imzx = this.images[this.liked].message
+      }
+      console.log(this.liked);
+      console.log(this.images.length);
     }
-
 
 
 
@@ -411,15 +409,9 @@ export class HomePage {
 
   dislike() {
 
-    if (this.liked == this.images.length - 2) {
-
-      document.getElementById("cards").style.display = "none"
-      this.hasMessages = "Oops! you ran out of cards ";
-      document.getElementById("hidebtnz").style.display = "none";
-
-    } else {
-
-
+    
+      
+      this.liked = this.liked + 1
       this.textdisplay = this.cardOverlay.dislike.indicator
       const toast = this.toastCtrl.create({
         message: this.textdisplay,
@@ -429,23 +421,22 @@ export class HomePage {
       });
       toast.present();
       console.log(this.textdisplay);
+      if (this.liked == this.images.length) {
+
+       
+        document.getElementById("hidebtnz").style.display = "none";
+        document.getElementById("cards").style.display = "none";
+        this.hasMessages = "Oops! you ran out of cards ";
+        this.hidebtnCard = true
+       
+        console.log("hide everything ")
 
 
+      } else {
+        this.imzx = this.images[this.liked].message
+      }
 
-
-
-      this.liked = this.liked + 1
-      this.imzx = this.images[this.liked].message
-
-      console.log(this.liked);
-      console.log(this.images.length);
-
-    }
-
-
-
-    console.log(this.liked);
-    console.log(this.images.length);
+    
 
 
 
@@ -453,7 +444,9 @@ export class HomePage {
   }
 
 
-
+  takeMeToCardPage(){
+    this.navCtrl.push(CardPage) ;
+  }
 
   insertpic(event) {
     if (event.target.files && event.target.files[0]) {

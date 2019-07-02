@@ -124,14 +124,7 @@ export class DatabaseProvider {
 
         var user = firebase.auth().currentUser;
 
-        user.sendEmailVerification().then(function () {
-          // Email sent.
-        }).catch(function (error) {
-          // An error happened.
-        });
-
-
-        resolve();
+       resolve();
 
       }, (error) => {
         reject(error);
@@ -517,7 +510,11 @@ export class DatabaseProvider {
 
   }
 
-  getMessages() {
+  day =new Date(); 
+  datetoSting = this.day.toString();
+  res = this.datetoSting.substring(0, 4).toString();
+
+  getImages() {
 
     const loader = this.loadingCtrl.create({
       content: "Please wait... still connecting",
@@ -539,10 +536,12 @@ export class DatabaseProvider {
 
         for (var i = 0; i < keys.length; i++) {
           var k = keys[i];
+          
 
           let obj = {
             k: k,
-            message: message[k].message
+            message: message[k].message ,
+            day:message[k].day
 
           }
           this.messageArray.push(obj)
